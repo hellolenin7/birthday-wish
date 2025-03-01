@@ -1,0 +1,109 @@
+/* Import Romantic Font */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+
+body {
+    font-family: 'Dancing Script', cursive; /* Romantic feel */
+    text-align: center;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3); /* Romantic gradient */
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 8px rgba(255, 255, 255, 0.8); /* Soft glow effect */
+}
+
+p {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.heart {
+    font-size: 2.5rem;
+    color: red;
+}
+
+/* Image Container - Flexbox for perfect alignment */
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Adjust spacing between images */
+    margin-top: 20px;
+    width: 90%;
+    position: relative; /* Allows middle image to come forward */
+}
+
+/* Common style for all images */
+.image-container img {
+    width: 30%;  
+    height: 380px; 
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+    transition: transform 0.4s ease, box-shadow 0.4s ease; 
+    position: relative;
+}
+
+/* Hover Effect */
+.image-container img:hover {
+    transform: scale(1.1); /* Slight zoom */
+    box-shadow: 0 0 30px rgba(255, 255, 255, 1); /* Soft glow */
+}
+
+/* Middle image forward effect */
+.image-container img:nth-child(2) {
+    transform: scale(1.1); /* Slightly larger */
+    z-index: 1; /* Brings it forward */
+    margin-top: -15px; /* Moves it slightly up */
+}
+
+/* Floating Heart Animation */
+.image-container img:hover::after {
+    content: "💖💘❤️";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    animation: floatHearts 1s ease-out forwards;
+}
+
+/* Heart Floating Animation */
+@keyframes floatHearts {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    50% { opacity: 1; transform: translate(-50%, -80%) scale(1.2); }
+    100% { opacity: 0; transform: translate(-50%, -150%) scale(1.5); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .image-container {
+        flex-direction: column;
+    }
+
+    .image-container img {
+        width: 80%; 
+        height: auto;
+        margin: 0;
+        transform: scale(1);
+    }
+
+    /* Reset middle image effect on mobile */
+    .image-container img:nth-child(2) {
+        margin-top: 0;
+        transform: scale(1);
+    }
+}
